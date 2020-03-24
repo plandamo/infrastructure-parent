@@ -39,6 +39,14 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 新增用户
+     * @param admin
+     * @Return void
+     * @Date 2020/3/24 20:55
+     */
     public void saveAdmin(Admin admin) {
 
         adminMapper.insert(admin);
@@ -46,11 +54,28 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 查询所有
+     * @param
+     * @Return java.util.List<com.mountain.infrastructure.model.Admin>
+     * @Date 2020/3/24 20:55
+     */
     public List<Admin> getAll() {
         return adminMapper.selectByExample(new AdminExample());
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 判断用户名密码是否正确
+     * @param loginAcct 用户名
+     * @param userPswd 密码
+     * @Return com.mountain.infrastructure.model.Admin
+     * @Date 2020/3/24 20:55
+     */
     public Admin getAdminByLoginAcct(String loginAcct, String userPswd) {
 
         // 1.根据登录账号查询Admin对象
@@ -97,6 +122,16 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 分页 + 条件查询
+     * @param keyword
+     * @param pageNum
+     * @param pageSize
+     * @Return com.github.pagehelper.PageInfo<com.mountain.infrastructure.model.Admin>
+     * @Date 2020/3/24 20:52
+     */
     public PageInfo<Admin> getPageInfo(String keyword, Integer pageNum, Integer pageSize) {
 
         // 1.调用PageHelper的静态方法开启分页功能
@@ -111,16 +146,40 @@ public class AdminServiceImpl implements AdminService {
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 删除用户
+     * @param adminId
+     * @Return void
+     * @Date 2020/3/24 20:56
+     */
     public void remove(Integer adminId) {
         adminMapper.deleteByPrimaryKey(adminId);
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 根据主键查询
+     * @param adminId
+     * @Return com.mountain.infrastructure.model.Admin
+     * @Date 2020/3/24 20:56
+     */
     public Admin getAdminById(Integer adminId) {
         return adminMapper.selectByPrimaryKey(adminId);
     }
 
 
+    /**
+     * @Author liujinshan
+     * @Version  1.0
+     * @Description 更新用户信息
+     * @param admin 用户实体
+     * @Return void
+     * @Date 2020/3/24 20:51
+     */
     public void update(Admin admin) {
 
         // “Selective”表示有选择的更新，对于null值的字段不更新

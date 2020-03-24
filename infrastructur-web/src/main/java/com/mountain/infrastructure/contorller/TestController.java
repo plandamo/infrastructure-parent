@@ -15,12 +15,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class TestHandler {
+public class TestController {
 	
 	@Autowired
 	private AdminService adminService;
 	
-	private Logger logger = LoggerFactory.getLogger(TestHandler.class);
+	private Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	/*@ResponseBody
 	@RequestMapping("/send/compose/object.json")

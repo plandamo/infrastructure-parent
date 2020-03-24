@@ -38,8 +38,10 @@
         }
      -->
     <mvc:view-controller path="/admin/to/login/page.html" view-name="system/login"/>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="user/add"/>
     <mvc:view-controller path="/admin/to/main/page.html" view-name="system/main"/>
     <mvc:view-controller path="/role/to/page.html" view-name="role/list"/>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu/list"/>
 
     <!-- 注册拦截器 -->
     <mvc:interceptors>

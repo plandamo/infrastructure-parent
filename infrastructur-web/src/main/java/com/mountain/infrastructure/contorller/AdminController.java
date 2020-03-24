@@ -37,7 +37,7 @@ public class AdminController {
 		// 2.将Admin对象存入模型
 		/*modelMap.addAttribute("admin", admin);*/
 
-		return "admin-edit";
+		return "user/edit";
 	}
 
 	@RequestMapping("/admin/save.html")

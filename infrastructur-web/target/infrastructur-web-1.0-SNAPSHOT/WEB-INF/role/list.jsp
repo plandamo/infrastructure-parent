@@ -5,7 +5,7 @@
 <%@include file="/WEB-INF/system/head.jsp"%>
 <link rel="stylesheet" href="css/pagination.css" />
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
-<script type="text/javascript" src="crowd/my-role.js"></script>
+<script type="text/javascript" src="js/role/role.js"></script>
 <script type="text/javascript">
 
 	$(function(){
