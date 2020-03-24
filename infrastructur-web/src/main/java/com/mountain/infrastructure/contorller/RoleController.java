@@ -18,7 +18,15 @@ public class RoleController {
 	
 	@Autowired
 	private RoleService roleService;
-	
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 批量删除
+	 * @param roleIdList
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:18
+	 */
 	@ResponseBody
 	@RequestMapping("/role/remove/by/role/id/array.json")
 	public ResultEntity<String> removeByRoleIdAarry(@RequestBody List<Integer> roleIdList) {
@@ -27,7 +35,15 @@ public class RoleController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 更新角色
+	 * @param role
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:18
+	 */
 	@ResponseBody
 	@RequestMapping("/role/update.json")
 	public ResultEntity<String> updateRole(Role role) {
@@ -36,7 +52,15 @@ public class RoleController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 新增角色
+	 * @param role
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:18
+	 */
 	@ResponseBody
 	@RequestMapping("/role/save.json")
 	public ResultEntity<String> saveRole(Role role) {
@@ -45,7 +69,19 @@ public class RoleController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 分页查询
+	 * @param pageNum
+	 * @param pageSize
+	 * @param keyword
+	 * @Return com.mountain.infrastructure.util.ResultEntity<com.github.pagehelper.PageInfo<com.mountain.infrastructure.model.Role>>
+	 * @Date 2020/3/24 21:19
+	 */
 	@ResponseBody
 	@RequestMapping("/role/get/page/info.json")
 	public ResultEntity<PageInfo<Role>> getPageInfo(

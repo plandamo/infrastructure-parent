@@ -18,7 +18,15 @@ public class MenuController {
 	
 	@Autowired
 	private MenuService menuService;
-	
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 根据id删除菜单
+	 * @param id
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:14
+	 */
 	@ResponseBody
 	@RequestMapping("/menu/remove.json")
 	public ResultEntity<String> removeMenu(@RequestParam("id") Integer id) {
@@ -27,7 +35,17 @@ public class MenuController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 更新菜单
+	 * @param menu
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:15
+	 */
 	@ResponseBody
 	@RequestMapping("/menu/update.json")
 	public ResultEntity<String> updateMenu(Menu menu) {
@@ -36,7 +54,16 @@ public class MenuController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 新增菜单
+	 * @param menu
+	 * @Return com.mountain.infrastructure.util.ResultEntity<java.lang.String>
+	 * @Date 2020/3/24 21:15
+	 */
 	@ResponseBody
 	@RequestMapping("/menu/save.json")
 	public ResultEntity<String> saveMenu(Menu menu) {
@@ -47,7 +74,16 @@ public class MenuController {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 查询所有
+	 * @param
+	 * @Return com.mountain.infrastructure.util.ResultEntity<com.mountain.infrastructure.model.Menu>
+	 * @Date 2020/3/24 21:15
+	 */
 	@ResponseBody
 	@RequestMapping("/menu/get/whole/tree.json")
 	public ResultEntity<Menu> getWholeTreeNew() {
@@ -93,7 +129,8 @@ public class MenuController {
 		// 11.经过上面的运算，根节点包含了整个树形结构，返回根节点就是返回整个树
 		return ResultEntity.successWithData(root);
 	}
-	
+
+
 	public ResultEntity<Menu> getWholeTreeOld() {
 		
 		// 1.查询全部的Menu对象

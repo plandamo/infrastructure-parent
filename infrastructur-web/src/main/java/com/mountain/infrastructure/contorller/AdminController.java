@@ -19,27 +19,54 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 更新用户
+	 * @param admin 用户实体
+	 * @param pageNum
+	 * @param keyword
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:03
+	 */
 	@RequestMapping("/admin/update.html")
 	public String update(Admin admin, @RequestParam("pageNum") Integer pageNum, @RequestParam("keyword") String keyword) {
 
-		/*adminService.update(admin);*/
+		adminService.update(admin);
 
 		return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
 	}
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 跳转到跟新页面
+	 * @param adminId
+	 * @param modelMap
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:04
+	 */
 	@RequestMapping("/admin/to/edit/page.html")
 	public String toEditPage(@RequestParam("adminId") Integer adminId,
 			ModelMap modelMap) {
 
 		// 1.根据adminId查询Admin对象
-		/*Admin admin = adminService.getAdminById(adminId);*/
+		Admin admin = adminService.getAdminById(adminId);
 
 		// 2.将Admin对象存入模型
-		/*modelMap.addAttribute("admin", admin);*/
+		modelMap.addAttribute("admin", admin);
 
 		return "user/edit";
 	}
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 新增用户
+	 * @param admin
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:05
+	 */
 	@RequestMapping("/admin/save.html")
 	public String save(Admin admin) {
 
@@ -48,13 +75,24 @@ public class AdminController {
 		return "redirect:/admin/get/page.html?pageNum="+Integer.MAX_VALUE;
 	}
 
+
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 删除用户，同时重定向
+	 * @param adminId
+	 * @param pageNum
+	 * @param keyword
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:05
+	 */
 	@RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
 	public String remove(@PathVariable("adminId") Integer adminId,
 						 @PathVariable("pageNum") Integer pageNum,
 						 @PathVariable("keyword") String keyword) {
 
 		// 执行删除
-		/*adminService.remove(adminId);*/
+		adminService.remove(adminId);
 
 		// 页面跳转：回到分页页面
 
@@ -69,6 +107,17 @@ public class AdminController {
 		return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
 	}
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 分页查询 + 条件
+	 * @param keyword 用户明测
+	 * @param pageNum 当前页
+	 * @param pageSize 当前页大小
+	 * @param modelMap
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:06
+	 */
 	@RequestMapping("/admin/get/page.html")
 	public String getPageInfo(
 			// 使用@RequestParam注解的defaultValue属性，指定默认值，在请求中没有携带对应参数时使用默认值
@@ -89,6 +138,14 @@ public class AdminController {
 		return "user/userPage";
 	}
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 推出登录
+	 * @param session
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:06
+	 */
 	@RequestMapping("/admin/do/logout.html")
 	public String doLogout(HttpSession session) {
 
@@ -98,6 +155,16 @@ public class AdminController {
 		return "redirect:/admin/to/login/page.html";
 	}
 
+	/**
+	 * @Author liujinshan
+	 * @Version  1.0
+	 * @Description 用户登录验证
+	 * @param loginAcct 用户名
+	 * @param userPswd 密码
+	 * @param session
+	 * @Return java.lang.String
+	 * @Date 2020/3/24 21:07
+	 */
 	@RequestMapping("/admin/do/login.html")
 	public String doLogin(
 			@RequestParam("loginAcct") String loginAcct,
