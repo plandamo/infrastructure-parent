@@ -196,4 +196,49 @@ public class AdminServiceImpl implements AdminService {
         }
     }
 
+
+
+    public void saveAdminRoleRelationship(Integer adminId, List<Integer> roleIdList) {
+
+        // 旧数据如下：
+        // adminId	roleId
+        // 1		1（要删除）
+        // 1		2（要删除）
+        // 1		3
+        // 1		4
+        // 1		5
+        // 新数据如下：
+        // adminId	roleId
+        // 1		3（本来就有）
+        // 1		4（本来就有）
+        // 1		5（本来就有）
+        // 1		6（新）
+        // 1		7（新）
+        // 为了简化操作：先根据adminId删除旧的数据，再根据roleIdList保存全部新的数据
+
+        // 1.根据adminId删除旧的关联关系数据
+        adminMapper.deleteOLdRelationship(adminId);
+
+        // 2.根据roleIdList和adminId保存新的关联关系
+        if(roleIdList != null && roleIdList.size() > 0) {
+            adminMapper.insertNewRelationship(adminId, roleIdList);
+        }
+    }
+
+
+    public Admin getAdminByLoginAcct(String username) {
+
+        AdminExample example = new AdminExample();
+
+        AdminExample.Criteria criteria = example.createCriteria();
+
+        criteria.andLoginAcctEqualTo(username);
+
+        List<Admin> list = adminMapper.selectByExample(example);
+
+        Admin admin = list.get(0);
+
+        return admin;
+    }
+
 }

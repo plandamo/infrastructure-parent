@@ -5,7 +5,7 @@
 <%@include file="/WEB-INF/system/head.jsp"%>
 <link rel="stylesheet" href="ztree/zTreeStyle.css"/>
 <script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
-<script type="text/javascript" src="crowd/my-menu.js"></script>
+<script type="text/javascript" src="js/menu/menu.js"></script>
 <script type="text/javascript">
 
 	$(function(){
